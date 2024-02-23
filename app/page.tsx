@@ -1,5 +1,6 @@
 import { MainContainer } from "@/components/main-container";
 import NavigationBar from "@/components/nav";
+import Link from "next/link";
 export default function Home() {
   return (
     <MainContainer>
@@ -14,9 +15,12 @@ export default function Home() {
               Sabrhea.
             </h1>
             <div className="my-4 border-b-8 border-muted-foreground/20 w-1/4"></div>
-            <button className="bg-main-gradient hover:opacity-80 duration-500 transition-all text-white py-2.5 px-5 rounded-full mt-2">
+            <Link
+              href="/about"
+              className="bg-main-gradient hover:opacity-80 duration-500 transition-all text-white py-2.5 px-5 rounded-full mt-2"
+            >
               Contact Me °✩
-            </button>
+            </Link>
           </div>
         </div>
         <div className="hidden xl:block -mt-36 absolute z-20 -right-36">
