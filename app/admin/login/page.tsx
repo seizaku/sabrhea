@@ -1,9 +1,7 @@
-"use client";
 import { MainContainer } from "@/components/main-container";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ButtonPrimary } from "@/components/button-primary";
-import { useState } from "react";
 
 export default function Home() {
   return (

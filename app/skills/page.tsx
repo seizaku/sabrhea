@@ -3,8 +3,11 @@ import NavigationBar from "@/components/nav";
 import { MailIcon, FacebookIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { getSkills } from "../data-access/skills";
 
-export default function Skills() {
+export default async function Skills() {
+  const skills = await getSkills();
+  console.log(skills);
   return (
     <MainContainer>
       <NavigationBar />
@@ -14,96 +17,28 @@ export default function Skills() {
             ✮ ⋆ ˚｡𖦹 ⋆｡°✩
           </h1> */}
           <div className="h-full w-full rounded-xl">
-            <div className="flex gap-12 justify-between my-4">
-              <h1 className="text-xl font-bold text-main-gradient-t border-b">
-                Office Suites
-              </h1>
-              <ul className="flex gap-4 justify-end">
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-              </ul>
-            </div>
-            <div className="flex gap-12 justify-between my-4">
-              <h1 className="text-xl font-bold text-main-gradient-t border-b">
-                Presentation Software
-              </h1>
-              <ul className="flex gap-4 justify-end">
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-              </ul>
-            </div>
-            <div className="flex gap-12 justify-between my-4">
-              <h1 className="text-xl font-bold text-main-gradient-t border-b">
-                System Startup
-              </h1>
-              <ul className="flex gap-4 justify-end">
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-              </ul>
-            </div>
-            <div className="flex gap-12 justify-between my-4">
-              <h1 className="text-xl font-bold text-main-gradient-t border-b">
-                Server-Client Networking
-              </h1>
-              <ul className="flex gap-4 justify-end">
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-              </ul>
-            </div>
-            <div className="flex gap-12 justify-between my-4">
-              <h1 className="text-xl font-bold text-main-gradient-t border-b">
-                System Unit Repair
-              </h1>
-              <ul className="flex gap-4 justify-end">
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-              </ul>
-            </div>
-            <div className="flex gap-12 justify-between my-4">
-              <h1 className="text-xl font-bold text-main-gradient-t border-b">
-                MAC Filtering
-              </h1>
-              <ul className="flex gap-4 justify-end">
-                <li>
-                  <Image alt="paw-icon" height={24} width={24} src="/paw.png" />
-                </li>
-              </ul>
-            </div>
+            {skills.map((skill: any, index) => (
+              <div
+                key={`skill-${index}`}
+                className="flex gap-12 justify-between my-4"
+              >
+                <h1 className="text-xl font-bold text-main-gradient-t border-b">
+                  {skill.skill_description}
+                </h1>
+                <ul className="flex gap-4 justify-end">
+                  {Array.from({ length: skill.rating }).map((value, index) => (
+                    <li key={index}>
+                      <Image
+                        alt="paw-icon"
+                        height={24}
+                        width={24}
+                        src="/paw.png"
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>

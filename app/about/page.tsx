@@ -2,12 +2,19 @@ import { MainContainer } from "@/components/main-container";
 import NavigationBar from "@/components/nav";
 import { MailIcon, FacebookIcon } from "lucide-react";
 import Link from "next/link";
-export default function About() {
+import { getProfileInformation } from "../data-access/about";
+
+export default async function About() {
+  const data: any = await getProfileInformation();
   return (
     <MainContainer>
       <NavigationBar />
       <section className="h-fit pb-14 md:px-24 text-center">
-        <div className="h-64 w-64 rounded-full bg-muted mx-auto my-4"></div>
+        <img
+          className="h-64 w-64 rounded-full bg-muted mx-auto my-4"
+          src={data.profile_picture}
+          alt=""
+        />
         <h1 className="text-2xl font-bold text-main-gradient-t">
           ⋆ ✮ Lorem Ipsum ✮ ⋆
         </h1>
@@ -24,9 +31,7 @@ export default function About() {
           </li>
         </ul>
         <p className="text-sm leading-6 text-muted-foreground/50 text-start p-4">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias libero
-          laborum commodi ipsam id qui asperiores odit beatae quaerat, inventore
-          esse cupiditate nulla iste a, neque autem nihil corporis ad?
+          {data.about_description}
         </p>
       </section>
     </MainContainer>
