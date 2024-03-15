@@ -17,6 +17,7 @@ import {
 import NavigationBar from "@/components/nav";
 import { getSystems } from "../data-access/works";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function Works() {
   const systems = await getSystems();
@@ -56,7 +57,7 @@ export default async function Works() {
               <Link key={`system-${index}`} href={data?.link}>
                 <Card className="bg-white w-full border-none rounded-lg overflow-hidden hover:shadow-lg transition duration-300">
                   <CardHeader className="relative p-0">
-                    <img
+                    <Image
                       src={data.banner_url}
                       alt="Product Image"
                       className="w-full h-60 bg-cover"
