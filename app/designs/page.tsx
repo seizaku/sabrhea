@@ -28,7 +28,10 @@ export default async function Works() {
       <section className="min-h-fit pb-24 md:px-24">
         <div className="w-full h-full grid grid-cols-1 xl:grid-cols-3 gap-4">
           {designs.map((data: any, index) => (
-            <div className="relative p-1 h-full overflow-hidden flex items-center justify-between rounded-lg">
+            <div
+              key={index}
+              className="relative p-1 h-full overflow-hidden flex items-center justify-between rounded-lg"
+            >
               <AspectRatio ratio={16 / 9} className="bg-muted">
                 <Image
                   src={data?.banner_url}
