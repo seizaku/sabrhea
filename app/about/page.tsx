@@ -1,6 +1,11 @@
 import { MainContainer } from "@/components/main-container";
 import NavigationBar from "@/components/nav";
-import { MailIcon, FacebookIcon } from "lucide-react";
+import {
+  MailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  InstagramIcon,
+} from "lucide-react";
 import Link from "next/link";
 import { getProfileInformation } from "../data-access/about";
 
@@ -15,22 +20,32 @@ export default async function About() {
           src={data.profile_picture}
           alt=""
         />
-        <h1 className="text-2xl font-bold text-main-gradient-t">
-          ⋆ ✮ Lorem Ipsum ✮ ⋆
-        </h1>
-        <ul className="flex gap-2 mx-auto justify-center mb-2">
+        <h1 className="text-2xl font-bold text-third">{data.full_name}</h1>
+        <ul className="flex gap-2 mx-auto justify-center my-2">
           <li>
-            <Link href="https://www.facebook.com/">
-              <FacebookIcon className="text-third h-5 w-5" />
+            <Link href={`${data.linkedin_link}`}>
+              <LinkedinIcon className="text-muted-foreground h-5 w-5" />
             </Link>
           </li>
           <li>
-            <Link href="https://www.facebook.com/">
-              <MailIcon className="text-third h-5 w-5" />
+            <Link href={`${data.instagram_link}`}>
+              <InstagramIcon className="text-muted-foreground h-5 w-5" />
+            </Link>
+          </li>
+          <li>
+            <Link href={data.facebook_link}>
+              <FacebookIcon className="text-muted-foreground h-5 w-5" />
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={`https://mail.google.com/mail/?view=cm&to=${data.email_address}`}
+            >
+              <MailIcon className="text-muted-foreground h-5 w-5" />
             </Link>
           </li>
         </ul>
-        <p className="text-sm leading-6 text-muted-foreground/50 text-start p-4">
+        <p className="text-sm leading-6 text-muted-foreground/50 text-center p-4">
           {data.about_description}
         </p>
       </section>

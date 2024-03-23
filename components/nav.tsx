@@ -11,8 +11,12 @@ const navlinks = [
     href: "/about",
   },
   {
-    title: "Works",
-    href: "/works",
+    title: "Systems",
+    href: "/systems",
+  },
+  {
+    title: "Designs",
+    href: "/designs",
   },
   {
     title: "Skills",
@@ -25,7 +29,7 @@ const NavigationBar = () => {
   return (
     <section id="home" className="container p-12 md:px-24 md:pt-24">
       <nav>
-        <ul className="grid grid-cols-4 place-items-start max-w-xl w-full font-bold sm:text-xl lg:text-2xl">
+        <ul className="grid grid-cols-5 place-items-start max-w-2xl w-full font-bold sm:text-xl lg:text-2xl">
           {navlinks.map(({ title, href }, index) => (
             <li
               key={index}
