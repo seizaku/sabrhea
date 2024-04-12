@@ -160,6 +160,7 @@ export const SystemForm = ({ data, children }: any) => {
               onChange={(event: any) => setImageAsURI(event.target.files[0])}
               name="banner_url"
               type="file"
+              required
             />
           </div>
           <div className="grid gap-1.5 mt-4">
