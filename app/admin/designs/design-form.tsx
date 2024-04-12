@@ -52,12 +52,16 @@ export const DesignForm = ({ data, children }: any) => {
       contentType: "image/png",
     });
 
-    const url = await getDownloadURL(storageRef).then((url) => {
-      return url;
-    });
+    if (formData.banner_url) {
+      formData.banner_url = await getDownloadURL(storageRef).then((url) => {
+        return url;
+      });
+    } else {
+      formData.banner_url = "gs://sabrheas.appspot.com/placeholder.svg";
+    }
 
     let data = {
-      banner_url: url,
+      banner_url: formData.banner_url,
       design_title: formData.design_title,
       design_description: formData.design_description,
       link: formData.link,

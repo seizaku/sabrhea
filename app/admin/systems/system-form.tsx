@@ -61,12 +61,16 @@ export const SystemForm = ({ data, children }: any) => {
       contentType: "image/png",
     });
 
-    const url = await getDownloadURL(storageRef).then((url) => {
-      return url;
-    });
+    if (formData.banner_url) {
+      formData.banner_url = await getDownloadURL(storageRef).then((url) => {
+        return url;
+      });
+    } else {
+      formData.banner_url = "gs://sabrheas.appspot.com/placeholder.svg";
+    }
 
     let data = {
-      banner_url: url,
+      banner_url: formData.banner_url,
       system_title: formData.system_title,
       system_description: formData.system_description,
       link: addHttpsIfNeeded(formData.link),
