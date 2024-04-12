@@ -61,7 +61,7 @@ export function SkillsDataTable({ data }: any) {
     <div className="w-full">
       <div className="flex justify-between items-center py-4">
         <Input
-          placeholder="Filter systems..."
+          placeholder="Filter skills..."
           value={
             (table
               .getColumn("skill_description")

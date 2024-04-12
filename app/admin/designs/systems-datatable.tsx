@@ -61,7 +61,7 @@ export function SystemDataTable({ data }: any) {
     <div className="w-full">
       <div className="flex justify-between items-center py-4">
         <Input
-          placeholder="Filter systems..."
+          placeholder="Filter designs..."
           value={
             (table.getColumn("design_title")?.getFilterValue() as string) ?? ""
           }
