@@ -63,7 +63,10 @@ export default function Home() {
           </div>
           <div className="grid gap-1.5">
             <Label>Password</Label>
-            <Input onKeyUp={(e) => setPassword(e.currentTarget.value)} />
+            <Input
+              type="password"
+              onKeyUp={(e) => setPassword(e.currentTarget.value)}
+            />
           </div>
           <ButtonPrimary onClick={() => handleSubmit()} className="w-full">
             Login
