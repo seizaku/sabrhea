@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { getProfileInformation } from "../data-access/about";
+import Image from "next/image";
 
 export default async function About() {
   const data: any = await getProfileInformation();
@@ -15,10 +16,10 @@ export default async function About() {
     <MainContainer>
       <NavigationBar />
       <section className="h-fit pb-14 md:px-24 text-center">
-        <img
+        <Image
           className="h-64 w-64 rounded-full bg-muted mx-auto my-4"
           src={data.profile_picture}
-          alt=""
+          alt="profile-picture"
         />
         <h1 className="text-2xl font-bold text-third">{data.full_name}</h1>
         <ul className="flex gap-2 mx-auto justify-center my-2">

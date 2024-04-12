@@ -11,6 +11,7 @@ import { storage } from "@/db/firebase-config";
 import { ref, getDownloadURL } from "firebase/storage";
 import { updateItem } from "@/app/data-access/works";
 import { useToast } from "@/components/ui/use-toast";
+import Image from "next/image";
 
 export default function AdminAbout() {
   const [image, setImage] = useState<any>("");
@@ -90,7 +91,7 @@ export default function AdminAbout() {
         onSubmit={handleSubmit}
         className="h-fit pb-14 px-12 md:px-24 text-center space-y-4"
       >
-        <img
+        <Image
           className="h-64 w-64 rounded-full bg-muted mx-auto my-4"
           src={
             !image
@@ -99,7 +100,7 @@ export default function AdminAbout() {
                 : "/placeholder.svg"
               : data?.profile_picture
           }
-          alt=""
+          alt="profile-picture"
         />
         <div className="flex flex-col items-start gap-2">
           <label className="font-bold">Profile Picture</label>
