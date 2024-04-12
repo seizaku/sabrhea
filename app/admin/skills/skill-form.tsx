@@ -15,27 +15,34 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { addItem, updateItem } from "@/app/data-access/works";
-
-import { storage } from "@/db/firebase-config";
-import { ref, getDownloadURL, uploadString } from "firebase/storage";
+import { useToast } from "@/components/ui/use-toast";
 
 export const SkillForm = ({ data, children }: any) => {
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState<any>();
+  const { toast } = useToast();
 
   const handleInsert = async (formData: any) => {
     let data = {
-      design_title: formData.design_title,
-      design_description: formData.design_description,
-      link: formData.link,
+      skill_description: formData.skill_description,
+      rating: formData.rating,
     };
+    console.log(data);
 
-    await addItem(JSON.stringify(data), "designs");
+    await addItem(JSON.stringify(data), "skills");
+    toast({
+      title: "Item created successfully!",
+      description: new Date().toISOString().slice(0, 10),
+    });
     setOpen(false);
   };
 
   const handleUpdate = async (formData: any) => {
     await updateItem(formData, "skills", data.id);
+    toast({
+      title: "Item updated successfully!",
+      description: new Date().toISOString().slice(0, 10),
+    });
     setOpen(false);
   };
 

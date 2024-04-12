@@ -15,6 +15,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { addItem, updateItem } from "@/app/data-access/works";
+import { useToast } from "@/components/ui/use-toast";
 
 import { storage } from "@/db/firebase-config";
 import { ref, getDownloadURL, uploadString } from "firebase/storage";
@@ -22,6 +23,8 @@ import { ref, getDownloadURL, uploadString } from "firebase/storage";
 export const DesignForm = ({ data, children }: any) => {
   const [image, setImage] = useState<any>();
   const [open, setOpen] = useState(false);
+  const { toast } = useToast();
+
   const setImageAsURI = (file: any) => {
     const reader = new FileReader();
 
@@ -61,6 +64,11 @@ export const DesignForm = ({ data, children }: any) => {
     };
 
     await addItem(JSON.stringify(data), "designs");
+    toast({
+      title: "Item created successfully!",
+      description: new Date().toISOString().slice(0, 10),
+    });
+
     setOpen(false);
   };
 
@@ -87,6 +95,10 @@ export const DesignForm = ({ data, children }: any) => {
     }
 
     await updateItem(formData, "designs", data.id);
+    toast({
+      title: "Item updated successfully!",
+      description: new Date().toISOString().slice(0, 10),
+    });
     setOpen(false);
   };
 

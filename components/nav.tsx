@@ -11,12 +11,8 @@ const navlinks = [
     href: "/about",
   },
   {
-    title: "Systems",
-    href: "/systems",
-  },
-  {
-    title: "Designs",
-    href: "/designs",
+    title: "Works",
+    href: "/works",
   },
   {
     title: "Skills",

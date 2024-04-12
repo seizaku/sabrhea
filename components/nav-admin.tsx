@@ -1,5 +1,5 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const navlinks = [
   {
@@ -26,6 +26,14 @@ const navlinks = [
 
 const AdminNavigationBar = () => {
   const path = usePathname();
+  const router = useRouter();
+  if (typeof window !== "undefined") {
+    if (sessionStorage.getItem("logged_in") != "true") {
+      router.push("./admin/login");
+      return;
+    }
+  }
+
   return (
     <section id="home" className="container p-12 md:px-24 md:pt-24">
       <nav>

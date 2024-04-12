@@ -10,10 +10,12 @@ import { uploadString } from "firebase/storage";
 import { storage } from "@/db/firebase-config";
 import { ref, getDownloadURL } from "firebase/storage";
 import { updateItem } from "@/app/data-access/works";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function AdminAbout() {
   const [image, setImage] = useState<any>("");
   const [data, setData] = useState<any>();
+  const { toast } = useToast();
 
   const setImageAsURI = (event: any) => {
     const file = event.target.files[0];
@@ -50,6 +52,10 @@ export default function AdminAbout() {
     }
 
     await updateItem(formData, "profile", "profile_document");
+    toast({
+      title: "Profile updated successfully!",
+      description: new Date().toISOString().slice(0, 10),
+    });
 
     location.reload();
   };

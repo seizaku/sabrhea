@@ -4,9 +4,6 @@ import {
   query,
   collection,
   addDoc,
-  getDoc,
-  where,
-  orderBy,
   doc,
   updateDoc,
   deleteDoc,
@@ -40,6 +37,7 @@ export const addItem = async (data: string, document: string) => {
     collection(db, document.toString()),
     JSON.parse(data)
   );
+  console.log(res);
 };
 
 export const updateItem = async (

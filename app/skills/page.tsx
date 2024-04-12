@@ -1,8 +1,6 @@
 import { MainContainer } from "@/components/main-container";
 import NavigationBar from "@/components/nav";
-import { MailIcon, FacebookIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { getSkills } from "../data-access/skills";
 
 export default async function Skills() {
@@ -13,9 +11,6 @@ export default async function Skills() {
       <NavigationBar />
       <section className="h-fit pb-14 md:px-24 text-start">
         <div className="w-full h-full p-4 md:p-0 mb-8">
-          {/* <h1 className="mb-4 text-2xl md:text-4xl text-main-gradient-t font-bold">
-            ✮ ⋆ ˚｡𖦹 ⋆｡°✩
-          </h1> */}
           <div className="h-full w-full rounded-xl">
             {skills.map((skill: any, index) => (
               <div
