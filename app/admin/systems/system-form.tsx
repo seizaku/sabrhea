@@ -120,7 +120,7 @@ export const SystemForm = ({ data, children }: any) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="">
+      <DialogContent className="overflow-y-scroll h-screen sm:overflow-y-none sm:h-fit">
         <DialogHeader>
           <DialogTitle>System Form</DialogTitle>
         </DialogHeader>
@@ -168,7 +168,7 @@ export const SystemForm = ({ data, children }: any) => {
             />
           </div>
           <DialogFooter className="my-4">
-            <Button className="bg-main hover:bg-main/90">Save Changes</Button>
+            <Button className="bg-main hover:bg-main/90">Add Design</Button>
           </DialogFooter>
         </form>
       </DialogContent>

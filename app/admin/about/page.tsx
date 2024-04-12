@@ -92,6 +92,8 @@ export default function AdminAbout() {
         className="h-fit pb-14 px-12 md:px-24 text-center space-y-4"
       >
         <Image
+          height={540}
+          width={540}
           className="h-64 w-64 rounded-full bg-muted mx-auto my-4"
           src={
             !image

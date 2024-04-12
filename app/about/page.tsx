@@ -17,6 +17,8 @@ export default async function About() {
       <NavigationBar />
       <section className="h-fit pb-14 md:px-24 text-center">
         <Image
+          height={540}
+          width={540}
           className="h-64 w-64 rounded-full bg-muted mx-auto my-4"
           src={data.profile_picture}
           alt="profile-picture"

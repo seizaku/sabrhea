@@ -37,7 +37,7 @@ const AdminNavigationBar = () => {
   return (
     <section id="home" className="container p-12 md:px-24 md:pt-24">
       <nav>
-        <ul className="grid grid-cols-5 place-items-start max-w-2xl w-full font-bold sm:text-xl lg:text-2xl">
+        <ul className="grid grid-cols-3 sm:grid-cols-5 place-items-start max-w-2xl w-full font-bold sm:text-xl lg:text-2xl">
           {navlinks.map(({ title, href }, index) => (
             <li
               key={index}
