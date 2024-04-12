@@ -157,6 +157,7 @@ export const DesignForm = ({ data, children }: any) => {
             <Label htmlFor="">Design Description</Label>
             <Textarea
               name="design_description"
+              maxLength={100}
               defaultValue={data?.design_description}
             ></Textarea>
           </div>

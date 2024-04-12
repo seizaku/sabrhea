@@ -155,7 +155,7 @@ export const SystemForm = ({ data, children }: any) => {
             <Label htmlFor="">System Description</Label>
             <Textarea
               name="system_description"
-              maxLength={150}
+              maxLength={100}
               defaultValue={data?.system_description}
             ></Textarea>
           </div>
@@ -168,7 +168,7 @@ export const SystemForm = ({ data, children }: any) => {
             />
           </div>
           <DialogFooter className="my-4">
-            <Button className="bg-main hover:bg-main/90">Add Design</Button>
+            <Button className="bg-main hover:bg-main/90">Add System</Button>
           </DialogFooter>
         </form>
       </DialogContent>
