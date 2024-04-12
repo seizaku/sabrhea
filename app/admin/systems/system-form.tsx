@@ -25,6 +25,15 @@ export const SystemForm = ({ data, children }: any) => {
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
 
+  function addHttpsIfNeeded(url: any) {
+    // Check if the string starts with "https://"
+    if (!url.startsWith("https://")) {
+      // If not, add "https://"
+      url = "https://" + url;
+    }
+    return url;
+  }
+
   const setImageAsURI = (file: any) => {
     const reader = new FileReader();
 
@@ -60,7 +69,7 @@ export const SystemForm = ({ data, children }: any) => {
       banner_url: url,
       system_title: formData.system_title,
       system_description: formData.system_description,
-      link: formData.link,
+      link: addHttpsIfNeeded(formData.link),
     };
 
     await addItem(JSON.stringify(data), "systems");
@@ -81,6 +90,8 @@ export const SystemForm = ({ data, children }: any) => {
         formData.system_title
       }-${new Date().getDay()}-${new Date().getFullYear()}`
     );
+
+    formData.link = addHttpsIfNeeded(formData.link);
 
     if (formData.banner_url) {
       await uploadString(storageRef, formData.banner_url, "data_url", {
