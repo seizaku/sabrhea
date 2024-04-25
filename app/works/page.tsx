@@ -14,6 +14,7 @@ export default function Works() {
   const [designs, setDesigns] = useState<any>();
   const [selectedImg, setSelectedImg] = useState("");
   const [isSelected, setSelected] = useState(false);
+  const [isLandscape, setOrientation] = useState(false);
 
   async function getWorks() {
     const fetch_systems = await getSystems();
@@ -29,7 +30,7 @@ export default function Works() {
 
   useEffect(() => {
     getWorks();
-  }, [getWorks]);
+  }, []);
 
   return (
     <>
@@ -38,12 +39,12 @@ export default function Works() {
           onClick={() => setSelected(false)}
           className="z-50 fixed h-screen w-full flex items-center bg-black/70"
         >
-          <div className="m-auto flex items-center max-w-lg p-4">
+          <div className="m-auto flex items-center max-w-5xl max-h-[80%] object-cover p-4">
             <Image
-              className="max-w-full h-auto"
+              className="max-w-full"
               src={selectedImg}
               height={1080}
-              width={420}
+              width={720}
               alt="Image"
             />
           </div>
@@ -89,6 +90,7 @@ export default function Works() {
                     />
                   </AspectRatio>
                   <Link
+                    target="_blank"
                     href={data?.link}
                     className="opacity-0 hover:opacity-100 ease-in-out transition-all duration-500 absolute top-0 left-0 h-full w-full bg-black/40 flex flex-col items-center justify-center text-white cursor-pointer"
                   >

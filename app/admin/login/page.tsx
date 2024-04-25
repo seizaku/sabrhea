@@ -53,6 +53,19 @@ export default function Home() {
     );
   }
 
+  useEffect(() => {
+    function getSalt() {
+      bcrypt
+        .hash("password", 2)
+        .then((hash: any) => {
+          console.log("Hash ", hash);
+        })
+        .catch((err: any) => console.error(err.message));
+    }
+
+    getSalt();
+  }, []);
+
   return (
     <MainContainer className="max-w-sm mt-44">
       <section className="relative rounded-b-3xl bg-white drop-shadow-sm h-fit p-12 flex justify-between items-center">

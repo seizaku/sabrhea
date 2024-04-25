@@ -30,7 +30,7 @@ const AdminNavigationBar = () => {
   if (typeof window !== "undefined") {
     if (sessionStorage.getItem("logged_in") != "true") {
       router.push("./admin/login");
-      return;
+      return <section></section>;
     }
   }
 
@@ -59,6 +59,21 @@ const AdminNavigationBar = () => {
               ></span>
             </li>
           ))}
+          <li
+            className={`flex flex-col border-main hover:text-main-gradient-t text-muted-foreground/20 pb-2 group`}
+          >
+            <button
+              onClick={() => {
+                sessionStorage.clear();
+                router.push("/admin/login");
+              }}
+            >
+              Logout
+            </button>
+            <span
+              className={`transition-all duration-500 ease-in-out group-hover:w-full w-0 p-0.5 mt-1 group-hover:bg-main-gradient`}
+            ></span>
+          </li>
         </ul>
       </nav>
     </section>

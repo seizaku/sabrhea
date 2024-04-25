@@ -15,7 +15,7 @@ export default function AdminWorks() {
 
   useEffect(() => {
     getWorks();
-  }, [getWorks]);
+  }, []);
 
   return (
     <MainContainer>

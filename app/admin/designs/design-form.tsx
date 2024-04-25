@@ -19,8 +19,10 @@ import { useToast } from "@/components/ui/use-toast";
 
 import { storage } from "@/db/firebase-config";
 import { ref, getDownloadURL, uploadString } from "firebase/storage";
+import { useRouter } from "next/navigation";
 
 export const DesignForm = ({ data, children }: any) => {
+  const router = useRouter();
   const [image, setImage] = useState<any>();
   const [open, setOpen] = useState(false);
   const { toast } = useToast();
@@ -74,6 +76,7 @@ export const DesignForm = ({ data, children }: any) => {
     });
 
     setOpen(false);
+    location.reload();
   };
 
   const handleUpdate = async (formData: any) => {
@@ -104,6 +107,7 @@ export const DesignForm = ({ data, children }: any) => {
       description: new Date().toISOString().slice(0, 10),
     });
     setOpen(false);
+    location.reload();
   };
 
   const handleSubmit = async (event: any) => {
@@ -111,6 +115,9 @@ export const DesignForm = ({ data, children }: any) => {
     event.preventDefault();
     const formData: any = {};
     form.forEach((value, key) => (formData[key] = value));
+    if (!formData.banner_url) {
+      formData.banner_url = "gs://sabrheas.appspot.com/placeholder.svg";
+    }
     if (data) {
       if (!image) {
         delete formData.banner_url;
@@ -167,7 +174,9 @@ export const DesignForm = ({ data, children }: any) => {
             ></Textarea>
           </div>
           <DialogFooter className="my-4">
-            <Button className="bg-main hover:bg-main/90">Add Design</Button>
+            <Button className="bg-main hover:bg-main/90">
+              {data ? "Save Changes" : "Add Design"}
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

@@ -16,8 +16,10 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { addItem, updateItem } from "@/app/data-access/works";
 import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 export const SkillForm = ({ data, children }: any) => {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState<any>();
   const { toast } = useToast();
@@ -35,6 +37,7 @@ export const SkillForm = ({ data, children }: any) => {
       description: new Date().toISOString().slice(0, 10),
     });
     setOpen(false);
+    location.reload();
   };
 
   const handleUpdate = async (formData: any) => {
@@ -44,6 +47,7 @@ export const SkillForm = ({ data, children }: any) => {
       description: new Date().toISOString().slice(0, 10),
     });
     setOpen(false);
+    location.reload();
   };
 
   const handleSubmit = async (event: any) => {
@@ -84,7 +88,9 @@ export const SkillForm = ({ data, children }: any) => {
             />
           </div>
           <DialogFooter className="my-4">
-            <Button className="bg-main hover:bg-main/90">Save Changes</Button>
+            <Button className="bg-main hover:bg-main/90">
+              {data ? "Save Changes" : "Add Skill"}
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>
