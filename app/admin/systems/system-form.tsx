@@ -101,6 +101,8 @@ export const SystemForm = ({ data, children }: any) => {
     formData.link = addHttpsIfNeeded(formData.link);
 
     if (formData.banner_url) {
+      formData.banner_url = image;
+
       await uploadString(storageRef, formData.banner_url, "data_url", {
         contentType: "image/png",
       });
@@ -127,6 +129,7 @@ export const SystemForm = ({ data, children }: any) => {
     const formData: any = {};
     form.forEach((value, key) => (formData[key] = value));
     if (!formData.banner_url) {
+      console.log("HELLO");
       formData.banner_url = "gs://sabrheas.appspot.com/placeholder.svg";
     }
     if (data) {
@@ -167,7 +170,7 @@ export const SystemForm = ({ data, children }: any) => {
               onChange={(event: any) => setImageAsURI(event.target.files[0])}
               name="banner_url"
               type="file"
-              required
+              required={data ? false : true}
             />
           </div>
           <div className="grid gap-1.5 mt-4">
