@@ -1,5 +1,16 @@
 "use client";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { usePathname, useRouter } from "next/navigation";
+import { Button } from "./ui/button";
 
 const navlinks = [
   {
@@ -62,14 +73,31 @@ const AdminNavigationBar = () => {
           <li
             className={`flex flex-col border-main hover:text-main-gradient-t text-muted-foreground/20 pb-2 group`}
           >
-            <button
-              onClick={() => {
-                sessionStorage.clear();
-                router.push("/admin/login");
-              }}
-            >
-              Logout
-            </button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <button>Logout</button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Logout Confirmation</DialogTitle>
+                  <DialogDescription>
+                    Are you sure you want to logout?
+                  </DialogDescription>
+                </DialogHeader>
+                <DialogFooter>
+                  <Button
+                    className="bg-main hover:bg-main/90"
+                    onClick={() => {
+                      sessionStorage.clear();
+                      router.push("/admin/login");
+                    }}
+                    type="submit"
+                  >
+                    Confirm
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
             <span
               className={`transition-all duration-500 ease-in-out group-hover:w-full w-0 p-0.5 mt-1 group-hover:bg-main-gradient`}
             ></span>

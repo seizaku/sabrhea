@@ -145,7 +145,7 @@ export const SystemForm = ({ data, children }: any) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="overflow-y-scroll h-screen sm:overflow-y-none sm:h-fit">
+      <DialogContent className="overflow-y-scroll h-screen sm:overflow-y-none sm:max-h-[720px]">
         <DialogHeader>
           <DialogTitle>System Form</DialogTitle>
         </DialogHeader>
