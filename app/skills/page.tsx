@@ -1,27 +1,28 @@
+"use client";
 import { MainContainer } from "@/components/main-container";
 import NavigationBar from "@/components/nav";
 import Image from "next/image";
 import { getSkills } from "../data-access/skills";
 import { useEffect, useState } from "react";
 
-export default async function Skills() {
-  const [skills, setSkills] = useState<any>();
+export default function Skills() {
+  const [skills, setSkillList] = useState<any>();
+  const getWorks = async () => {
+    const skills = await getSkills();
+    setSkillList(skills);
+  };
 
   useEffect(() => {
-    async function fetchData() {
-      let data = await getSkills();
-      setSkills(data);
-    }
-    fetchData();
+    getWorks();
   }, []);
-  console.log(skills);
+
   return (
     <MainContainer>
       <NavigationBar />
       <section className="h-fit pb-14 md:px-24 text-start">
         <div className="w-full h-full p-4 md:p-0 mb-8">
           <div className="h-full w-full rounded-xl">
-            {skills.map((skill: any, index: number) => (
+            {skills?.map((skill: any, index: number) => (
               <div
                 key={`skill-${index}`}
                 className="flex gap-12 justify-between my-4"
