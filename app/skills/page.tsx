@@ -2,9 +2,18 @@ import { MainContainer } from "@/components/main-container";
 import NavigationBar from "@/components/nav";
 import Image from "next/image";
 import { getSkills } from "../data-access/skills";
+import { useEffect, useState } from "react";
 
 export default async function Skills() {
-  const skills = await getSkills();
+  const [skills, setSkills] = useState<any>();
+
+  useEffect(() => {
+    async function fetchData() {
+      let data = await getSkills();
+      setSkills(data);
+    }
+    fetchData();
+  }, []);
   console.log(skills);
   return (
     <MainContainer>
@@ -12,7 +21,7 @@ export default async function Skills() {
       <section className="h-fit pb-14 md:px-24 text-start">
         <div className="w-full h-full p-4 md:p-0 mb-8">
           <div className="h-full w-full rounded-xl">
-            {skills.map((skill: any, index) => (
+            {skills.map((skill: any, index: number) => (
               <div
                 key={`skill-${index}`}
                 className="flex gap-12 justify-between my-4"
